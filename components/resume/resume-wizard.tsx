@@ -80,12 +80,22 @@ export function ResumeWizard({ onComplete, onCancel }: ResumeWizardProps) {
             </p>
           </div>
           <Button onClick={() => onComplete({
-            contact: uploadedData.contact,
-            summary: uploadedData.summary,
-            experience: uploadedData.experience || [],
-            education: uploadedData.education || [],
-            skills: uploadedData.skills || [],
-            selectedTemplate: "modern-executive",
+            id: Date.now().toString(),
+            templateId: "modern-executive",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            contact: {
+              name: uploadedData.contact?.name || "",
+              email: uploadedData.contact?.email || "",
+              phone: uploadedData.contact?.phone || "",
+              location: uploadedData.contact?.location || "",
+              website: uploadedData.contact?.website || "",
+              linkedIn: uploadedData.contact?.linkedIn || "",
+            },
+            summary: uploadedData.summary || "",
+            experience: (uploadedData.experience as any) || [],
+            education: (uploadedData.education as any) || [],
+            skills: (uploadedData.skills as any) || [],
           })} className="w-full">
             Continue to Resume Editor
           </Button>

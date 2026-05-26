@@ -183,7 +183,7 @@ export function SalaryBenchmarksDashboard() {
                   tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
                 />
                 <Tooltip
-                  formatter={(value: number) => `$${value.toLocaleString()}`}
+                  formatter={(value: any) => `$${Number(value).toLocaleString()}`}
                   contentStyle={{
                     backgroundColor: "#fff",
                     border: "1px solid #ccc",
