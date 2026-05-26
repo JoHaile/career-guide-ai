@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import { getMarketInsights, getSalaryBenchmark, estimatePersonalSalary } from "@/lib/salary/benchmarks";
 import { auth } from "@/lib/auth";
 
@@ -55,7 +56,9 @@ export async function estimatePersonalSalaryAction(
   region: string = "United States"
 ) {
   try {
-    const session = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
     if (!session?.user?.id) {
       return {
         success: false,
