@@ -23,6 +23,7 @@ model User {
   accounts          Account[]
   interviewSessions InterviewSession[]
   isOnboarded       Boolean            @default(false)
+  resumeData        Json?              // Stores complete resume state (all templates and current data)
 
   @@unique([email])
   @@map("user")
