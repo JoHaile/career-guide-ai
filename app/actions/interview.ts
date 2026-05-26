@@ -21,7 +21,7 @@ import {
   type TranscriptEntry,
   type VoicePresetId,
 } from "@/lib/interview/types";
-import { Prisma } from "../../generated/prisma/client";
+import { Prisma } from "@prisma/client";
 
 async function requireUserId(): Promise<string | null> {
   const session = await auth.api.getSession({

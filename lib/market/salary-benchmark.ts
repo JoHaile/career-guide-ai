@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { estimateSalaryForTitle } from "./career-role";
-import { Prisma } from "../../generated/prisma/client";
+import { Prisma } from "@prisma/client";
 
 export async function getOrCreateSalaryBenchmark(
   jobTitle: string,

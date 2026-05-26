@@ -151,7 +151,7 @@ export async function generateResumePDFBlob(
       }
     }
 
-    return pdf.output("blob") as Promise<Blob>;
+    return pdf.output("blob") as Blob;
   } catch (error) {
     console.error("PDF blob generation failed:", error);
     throw new Error(`Failed to generate PDF: ${error instanceof Error ? error.message : "Unknown error"}`);

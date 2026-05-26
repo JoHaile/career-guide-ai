@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { generateJson, generateText, isGeminiConfigured } from "@/lib/gemini/client";
@@ -12,7 +13,9 @@ export async function saveResumeStateAction(
   resumeData: ResumeState
 ) {
   try {
-    const session = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
     if (!session?.user?.id) {
       return { success: false, error: "Unauthorized" };
     }
@@ -20,7 +23,7 @@ export async function saveResumeStateAction(
     const user = await prisma.user.update({
       where: { id: session.user.id },
       data: {
-        resumeData: resumeData as unknown as Record<string, unknown>,
+        resumeData: resumeData as any,
       },
     });
 
@@ -36,7 +39,9 @@ export async function saveResumeStateAction(
  */
 export async function loadResumeStateAction() {
   try {
-    const session = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
     if (!session?.user?.id) {
       return { success: false, error: "Unauthorized" };
     }
@@ -70,7 +75,9 @@ export async function parseResumeFileAction(
   error?: string;
 }> {
   try {
-    const session = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
     if (!session?.user?.id) {
       return { success: false, error: "Unauthorized" };
     }
@@ -135,7 +142,9 @@ export async function generateResumeSummaryAction(
   error?: string;
 }> {
   try {
-    const session = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
     if (!session?.user?.id) {
       return { success: false, error: "Unauthorized" };
     }
@@ -174,7 +183,9 @@ export async function optimizeBulletsAction(
   error?: string;
 }> {
   try {
-    const session = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
     if (!session?.user?.id) {
       return { success: false, error: "Unauthorized" };
     }
@@ -221,7 +232,9 @@ export async function getTailoringAdviceAction(
   error?: string;
 }> {
   try {
-    const session = await auth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
     if (!session?.user?.id) {
       return { success: false, error: "Unauthorized" };
     }

@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { fetchArbeitnowJobs } from "./arbeitnow";
 import { normalizeArbeitnowJob } from "./normalize";
 import type { JobListItem } from "./types";
-import { Prisma } from "../../generated/prisma/client";
+import { Prisma } from "@prisma/client";
 
 export async function syncJobsToDatabase(
   externalIds?: string[]
