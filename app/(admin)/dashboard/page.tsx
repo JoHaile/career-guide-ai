@@ -158,7 +158,7 @@ export default async function DashboardPage() {
             <div>
               <p className="font-medium">Quick actions</p>
               <p className="text-sm text-muted-foreground">
-                Explore jobs, analyze gaps, or build your ATS resume
+                Explore jobs, analyze gaps, build resumes, or research salary insights
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -170,6 +170,9 @@ export default async function DashboardPage() {
               </Button>
               <Button variant="outline" asChild>
                 <Link href="/resume">Resume Builder</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/salary-benchmarks">Salary Insights</Link>
               </Button>
             </div>
           </CardContent>
