@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "../../generated/prisma/client";
+import { Prisma } from "@prisma/client";
 import { extractExperienceGaps } from "./skill-extractor";
 import { upsertCareerRoleForJob } from "./career-role";
 import { getOrCreateSalaryBenchmark } from "./salary-benchmark";
